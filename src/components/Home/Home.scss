@@ -1,0 +1,30 @@
+.HomeWapper {
+    width: 1180px;
+    margin: 0 auto;
+    .SerachBox{
+        text-align: center;
+        margin: 10px 0px; 
+        input{
+            width: 30%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    }
+    .UserInfo{
+        display: grid;
+        grid-template-columns: auto auto auto;
+    }
+    .User{
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background: #ddd;
+        margin: 5px;
+        p{
+            text-align: center;
+        }
+    }
+    h2{
+        text-align: right;
+    }
+}
