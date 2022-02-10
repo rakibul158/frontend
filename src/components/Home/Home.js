@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Selected from '../Selected/Selected';
 import './Home.scss';
 
 class Home extends Component {
@@ -7,7 +8,8 @@ class Home extends Component {
         this.state = {
             error: null,
             isLoaded: false,
-            users: []
+            users: [],
+            search: ''
          };
         this.handleSearchValue = this.handleSearchValue.bind(this)
     }
@@ -35,7 +37,10 @@ class Home extends Component {
     }
     handleSearchValue = (e) => {
         const searchValue = e.target.value;
-        console.log(searchValue);
+        this.setState({
+            search: searchValue
+        });
+        // console.log(searchValue);
     }
 
     renderUserList(user) {
@@ -52,15 +57,23 @@ class Home extends Component {
 
     render() {
         const { users } = this.state;
-        // console.log("Api Data comming or not! ===|>>>",items);
+
         return (
             <div className='HomeWapper'>
-                <div className='SerachBox'>
-                    <input type="text" placeholder='Search' onChange={this.handleSearchValue} />
+                <div className='HearderTop'>
+                    <div className='SerachBox'>
+                        <input type="text" placeholder='Search' onChange={this.handleSearchValue} />
+                    </div>
+                    <div className='BrandName'>
+                        <p>Front End Development By React</p>
+                    </div>
+                    <div className='SelectedBox'>
+                        <Selected />
+                    </div>
                 </div>
                 <div className='UserInfo'>
                     {
-                        users.map(user => this.renderUserList(user))
+                        users.map((user) => this.renderUserList(user))
                     }
                </div>
             </div>
