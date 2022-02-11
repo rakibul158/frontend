@@ -56,7 +56,17 @@ class Home extends Component {
     }
 
     render() {
-        const { users } = this.state;
+        const { users, search } = this.state;
+
+        const lowercasedFilter = search.toLowerCase();
+        const filteredData = Object.values(users).filter((item) => {
+            return Object.keys(item).some(
+              (key) =>
+                typeof item[key] === "string" &&
+                item[key].toLowerCase().includes(lowercasedFilter)
+            );
+          }
+        );
 
         return (
             <div className='HomeWapper'>
@@ -73,7 +83,7 @@ class Home extends Component {
                 </div>
                 <div className='UserInfo'>
                     {
-                        users.map((user) => this.renderUserList(user))
+                        filteredData.map((user) => this.renderUserList(user))
                     }
                </div>
             </div>
